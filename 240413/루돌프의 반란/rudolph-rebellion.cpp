@@ -210,9 +210,14 @@ void moveSan() {
 			pq.push({ d, calDist(rudol.r, rudol.c, ny, nx) });
 		}
 
+		if (pq.empty()) {
+			santaMap[now.r][now.c] = i;
+			continue;
+		}
+
 		Move next = pq.top();
-		if (calDist(santas[i].r, santas[i].c, rudol.r, rudol.c) <= next.dist) {
-			santaMap[santas[i].r][santas[i].c] = i;
+		if (calDist(now.r, now.c, rudol.r, rudol.c) <= next.dist) {
+			santaMap[now.r][now.c] = i;
 			continue;
 		}
 
@@ -228,6 +233,7 @@ void moveSan() {
 
 			santas[i].r = santas[i].r + sdy[santas[i].dir ^ 2] * D;
 			santas[i].c = santas[i].c + sdx[santas[i].dir ^ 2] * D;
+			santas[i].dir ^= 2;
 			santas[i].sleep = 1;
 			if (santas[i].r < 1 || santas[i].r > N || santas[i].c < 1 || santas[i].c > N) {
 				santas[i].out = true;
@@ -244,8 +250,8 @@ void moveSan() {
 					int temp = santaMap[nowR][nowC];
 					santaMap[nowR][nowC] = nowNum;
 
-					int nextR = nowR + sdy[next.dir ^ 2];
-					int nextC = nowC + sdx[next.dir ^ 2];
+					int nextR = nowR + sdy[santas[i].dir];
+					int nextC = nowC + sdx[santas[i].dir];
 					if (nextR < 1 || nextR > N || nextC < 1 || nextR > N) {
 						santas[temp].out = true;
 						break;
@@ -358,6 +364,8 @@ int main() {
 			if (santas[i].out) continue;
 			ans[i]++;
 		} 
+
+		int de = -1;
 	}
 
 	for (int i = 1; i <= P; i++) {
