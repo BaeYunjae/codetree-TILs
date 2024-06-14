@@ -26,7 +26,8 @@ int main() {
             cout << v.size() << "\n";
         }
         else if (cmd == "get"){
-            if (v.size() >= k) cout << v[k - 1] << "\n";
+            cin >> x;
+            if (v.size() >= x) cout << v[x - 1] << "\n";
         }
     }
 
