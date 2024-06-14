@@ -20,14 +20,14 @@ int main() {
             v.push_back(x);
         }
         else if (cmd == "pop_back"){
-            if (v.size() > 0) v.pop_back();
+            v.pop_back();
         }
         else if (cmd == "size"){
             cout << v.size() << "\n";
         }
         else if (cmd == "get"){
             cin >> x;
-            if (v.size() >= x) cout << v[x - 1] << "\n";
+            cout << v[x - 1] << "\n";
         }
     }
 
