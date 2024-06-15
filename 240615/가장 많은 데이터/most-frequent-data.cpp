@@ -15,8 +15,7 @@ int main() {
     while(n--){
         cin >> str;
         um[str]++;
-        if (um[str] > ans)
-            ans = um[str];
+        ans = max(ans, um[str]);
     }
 
     cout << ans;
