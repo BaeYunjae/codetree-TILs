@@ -7,19 +7,24 @@ int main() {
     int n, m;
     cin >> n >> m;
 
-    unordered_map<string, string> um;
+    string words[100001];
+    unordered_map<string, int> um;
 
     for (int i = 1; i <= n; i++){
         string str;
         cin >> str;
-        um[to_string(i)] = str;
-        um[str] = to_string(i);
+        words[i] = str;
+        um[str] = i;
     }   
 
     while(m--){
-        string target;
-        cin >> target;
-        cout << um[target] << "\n";
+        string key;
+        cin >> key;
+        
+        if ('0' <= key[0] && key[0] <= '9') 
+            cout << words[stoi(key)] << "\n";
+        else    
+            cout << um[key] << "\n";
     }
 
     return 0;
