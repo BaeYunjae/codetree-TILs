@@ -2,35 +2,26 @@
 #include <unordered_map>
 using namespace std;
 
-int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0); cout.tie(0);
+int n, k;
+int arr[100000];
+unordered_map<long long, int> cnt;
 
-    long long n, k;
+int main(){
     cin >> n >> k;
 
-    unordered_map<int, int> um;
+    for (int i = 0; i < n; i++){
+        cin >> arr[i];
+    }
+
     int ans = 0;
 
-    while(n--){
-        int x;
-        cin >> x;
-        um[x]++;
+    for (int i = 0; i < n; i++){
+        long long diff = (long long)k - arr[i];
+        ans += cnt[diff];
+
+        cnt[arr[i]]++;
     }
 
-    for (auto it = um.begin(); it != um.end(); it++){
-        int num = it->first;
-        int diff = k - num;
-
-        if (num == diff){
-            ans += (it->second * (it->second - 1));
-        }
-        else{
-            ans += it->second * um[diff];
-        }
-    }
-
-    cout << ans / 2;
-
+    cout << ans;
     return 0;
 }
