@@ -20,7 +20,7 @@ int main(){
         freq[arr[i]]--;
 
         for (int j = 0; j < i; j++){
-            if (freq.count(k - arr[i] - arr[j]) > 0){
+            if (freq.find(k - arr[i] - arr[j]) != freq.end()){
                 ans += freq[k - arr[i] - arr[j]];
             }
         }
