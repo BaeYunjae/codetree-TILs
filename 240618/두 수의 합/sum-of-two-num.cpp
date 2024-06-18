@@ -16,20 +16,16 @@ int main() {
         int x;
         cin >> x;
 
-
-        if (um.find(x) == um.end()){
-            um[x] = 1;
-            if (um.find(k - x) == um.end()){
-                um[k - x] = 1;
-            }
-            else{
-                ans++;
-            }
+        um[x]++;
+        
+        if (um.find(k - x) == um.end()){
+            um[k - x] = 1;
         }
         else{
-            if (um.find(k - x) != um.end()){
+            for (int i = 0; i != um[k - x]; i++){
                 ans++;
             }
+            um[k - x]++;
         }
     }
 
