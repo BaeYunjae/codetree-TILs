@@ -15,21 +15,22 @@ int main() {
     while(n--){
         int x;
         cin >> x;
-
         um[x]++;
-        
-        if (um.find(k - x) == um.end()){
-            um[k - x] = 1;
+    }
+
+    for (auto it = um.begin(); it != um.end(); it++){
+        int num = it->first;
+        int diff = k - num;
+
+        if (num == diff){
+            ans += (it->second * (it->second - 1));
         }
         else{
-            for (int i = 0; i != um[k - x]; i++){
-                ans++;
-            }
-            um[k - x]++;
+            ans += it->second * um[diff];
         }
     }
 
-    cout << ans;
+    cout << ans / 2;
 
     return 0;
 }
