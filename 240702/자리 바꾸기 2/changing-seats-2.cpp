@@ -8,7 +8,7 @@ int n, k;
 int a[MAX], b[MAX];
 int arr[MAX];
 int ans[MAX];
-unordered_set>int> s[MAX];
+unordered_set<int> s[MAX];
 
 int main(){
     cin >> n >> k;
