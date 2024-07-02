@@ -4,33 +4,23 @@ using namespace std;
 
 int main() {
     int n, m;
-    int a[100001], b[100001];
+    unordered_set<int> s;
 
     cin >> n;
 
     for (int i = 0; i < n; i++){
-        cin >> a[i];
+        int x;
+        cin >> x;
+        s.insert(x);
     }
 
     cin >> m;
 
     for (int i = 0; i < m; i++){
-        cin >> b[i];
-    }
+        int x;
+        cin >> x;
 
-    unordered_set<int> s;
-
-    for (int i = 0; i < n; i++){
-        s.insert(a[i]);    
-    }
-
-    for (int i = 0; i < m; i++){
-        if (s.find(b[i]) == s.end()){
-            cout << 0 << "\n";
-        }
-        else {
-            cout << 1 << "\n";
-        }
+        cout << (int)(s.find(x) != s.end()) << "\n";
     }
 
     return 0;
