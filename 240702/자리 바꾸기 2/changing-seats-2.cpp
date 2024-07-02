@@ -1,45 +1,46 @@
 #include <iostream>
 #include <unordered_set>
-#include <vector>
 using namespace std;
 
-int main() {
-    int n, k;
+#define MAX 100001
+
+int n, k;
+int a[MAX], b[MAX];
+int arr[MAX];
+int ans[MAX];
+unordered_set>int> s[MAX];
+
+int main(){
     cin >> n >> k;
-    
-    int arr[100001];
-    unordered_set<int> s[100001];
-    
-    for (int i = 1; i <= n; i++){
-        s[i].insert(i);
-        arr[i] = i;
-    }
-
-    vector<pair<int, int>> v;
-
     for (int i = 0; i < k; i++){
-        int a, b;
-        cin >> a >> b;
-
-        v.push_back(make_pair(a, b));
+        cin >> a[i] >> b[i];
     }
 
-    for (int i = 0; i < 3; i++){
-        for (int j = 0; j < k; j++){
-            int a = v[j].first;
-            int b = v[j].second;
+    // 초기값 
+    for (int i = 1; i <= n; i++){
+        arr[i] = i;
+        s[i].insert(i);
+        ans[i] = 1;
+    }
 
-            int temp = arr[a];
-            arr[a] = arr[b];
-            arr[b] = temp;
+    for (int cnt = 0; cnt < 3; cnt++){
+        for (int i = 0; i < k; i++){
+            swap(arr[a[i]], arr[b[i]]);
 
-            s[arr[a]].insert(a);
-            s[arr[b]].insert(b);
+            if (s[arr[a[i]]].find(a[i]) == s[arr[a[i]]].end()){
+                s[arr[a[i]]].insert(a[i]);
+                ans[arr[a[i]]]++;
+            }
+
+            if (s[arr[b[i]]].find(b[i]) == s[arr[b[i]]].end()){
+                s[arr[b[i]]].insert(b[i]);
+                ans[arr[b[i]]]++;
+            }
         }
     }
 
     for (int i = 1; i <= n; i++){
-        cout << s[i].size() << "\n";
+        cout << ans[i] << "\n";
     }
 
     return 0;
