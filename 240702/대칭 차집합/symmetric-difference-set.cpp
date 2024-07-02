@@ -16,29 +16,18 @@ int main() {
         cin >> b[i];
     }
 
-    unordered_set<int> s1;
-    unordered_set<int> s2;
+    int ans = n + m;
+    unordered_set<int> s;
 
     for (int i = 0; i < n; i++){
-        s1.insert(a[i]);
+        s.insert(a[i]);
     }
 
     for (int i = 0; i < m; i++){
-        s2.insert(b[i]);
+        if (s.find(b[i]) != s.end()) ans -= 2;
     }
 
-    unordered_set<int> ans_s;
-
-    for (int i = 0; i < n; i++){
-        if (s2.find(a[i]) == s2.end()) ans_s.insert(a[i]);
-    }
-
-    for (int i = 0; i < m; i++){
-        if (s1.find(b[i]) == s1.end()) ans_s.insert(b[i]);
-    } 
-
-
-    cout << ans_s.size();
+    cout << ans;
 
     return 0;
 }
