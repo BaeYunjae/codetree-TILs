@@ -1,7 +1,13 @@
 #include <iostream>
 #include <unordered_map>
 #include <string>
+#include <vector>
+#include <algorithm>
 using namespace std;
+
+bool compare (pair<int, int> one, pair<int, int> two) {
+    return one.second < two.second;
+}
 
 int main() {
     string str;
@@ -12,10 +18,13 @@ int main() {
         um[str[i]]++;
     }
 
-    for (auto iter : um){
-        if (iter.second > 1) continue;
-        cout << iter.first;
-        return 0;
+    vector<pair<char, int>> sorted(um.begin(), um.end());
+    sort(sorted.begin(), sorted.end(), compare);
+
+    if (sorted[0].second == 1){
+        cout << sorted[0].first;
     }
-    cout << "None";
+    else {
+        cout << "None";
+    }
 }
