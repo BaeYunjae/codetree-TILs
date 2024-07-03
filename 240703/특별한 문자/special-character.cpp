@@ -1,6 +1,7 @@
 #include <iostream>
 #include <unordered_map>
 #include <string>
+#include <vector>
 using namespace std;
 
 int main() {
@@ -12,8 +13,13 @@ int main() {
         um[str[i]]++;
     }
 
-    for (auto it = um.end() - 1; it >= um.begin(); it++){
-        if (it.second > 1) continue;
-        cout << it.first;
+    vector<pair<char, int>> vect(um.begin(), um.end());
+
+    for (auto iter = vect.rbegin(); iter != vect.rend(); iter++){
+        if (iter->second > 1) continue;
+        cout << iter -> first;
+        return 0;
     }
+
+    cout << "None";
 }
