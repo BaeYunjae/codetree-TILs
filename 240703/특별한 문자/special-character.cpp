@@ -29,6 +29,7 @@ int main() {
     sort(vect.begin(), vect.end(), compare);
 
     for (auto iter = vect.begin(); iter != vect.end(); iter++){
+        if (iter->second.second > 1) continue;
         cout << iter -> first;
         return 0;
     }
