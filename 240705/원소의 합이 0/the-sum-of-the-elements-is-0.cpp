@@ -3,7 +3,7 @@
 using namespace std;
 
 int n;
-int ans = 0;
+long long ans = 0;
 int A[5001], B[5001], C[5001], D[5001];
 unordered_map<int, int> um;
 
@@ -17,7 +17,7 @@ int main() {
 
     for (int i = 0; i < n; i++){
         for (int j = 0; j < n; j++){
-            um[A[i] + B[i]]++;
+            um[A[i] + B[j]]++;
         }
     }
 
