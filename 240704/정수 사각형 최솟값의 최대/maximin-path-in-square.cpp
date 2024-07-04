@@ -29,8 +29,7 @@ int main() {
         for (int j = 2; j <= n; j++){
             // 1. map[i][j]가 가장 작으면 확정
             // 2. 위쪽과 왼쪽 중 map보다 작은 값인데, 둘 중에 큰 값
-            d[i][j] = max(d[i - 1][j], d[i][j - 1]);
-            if (d[i][j] > map[i][j]) d[i][j] = map[i][j];
+            d[i][j] = min(max(d[i - 1][j], d[i][j - 1]), map[i][j]);
         }
     }
 
