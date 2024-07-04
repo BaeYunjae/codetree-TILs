@@ -16,9 +16,8 @@ int main() {
         else if (um[x] > y) um[x] = y;
     }
 
-    int ans = 0;
+    long long ans = 0;
     for (auto iter : um){
-        cout << iter.first << " " << iter.second << "\n";
         ans += iter.second;
     }
 
