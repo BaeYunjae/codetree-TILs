@@ -3,33 +3,35 @@
 using namespace std;
 
 int n;
-long long ans = 0;
-int A[5001], B[5001], C[5001], D[5001];
-unordered_map<int, int> um;
+int ans = 0;
+int arr[4][5001];
+unordered_map<int, int> um_one;
+unordered_map<int, int> um_two;
 
 int main() {
     cin >> n;
-    
-    for (int i = 0; i < n; i++) cin >> A[i];
-    for (int i = 0; i < n; i++) cin >> B[i];
-    for (int i = 0; i < n; i++) cin >> C[i];
-    for (int i = 0; i < n; i++) cin >> D[i];
 
-    for (int i = 0; i < n; i++){
+    for (int i = 0; i < 4; i++){
         for (int j = 0; j < n; j++){
-            um[A[i] + B[j]]++;
+            cin >> arr[i][j];
         }
     }
 
     for (int i = 0; i < n; i++){
         for (int j = 0; j < n; j++){
-            int diff = - C[i] - D[j];
-            if (um.count(diff) > 0)
-                ans += um[diff];
+            um_one[arr[0][i] + arr[1][j]]++;
+            um_two[arr[2][i] + arr[3][j]]++;
+        }
+    }
+
+    for (auto it = um_one.begin(); it != um_one.end(); it++){
+        int diff = -(it->first);
+        if (um_two.find(diff) != um_two.end()){
+            ans += um_two[diff]*(it->second);
         }
     }
 
     cout << ans;
-
+    
     return 0;
 }
