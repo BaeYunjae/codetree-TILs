@@ -24,7 +24,7 @@ int main() {
 
     sort(vect.begin(), vect.end());
 
-    for (int i = vect.size() - 1; i >= vect.size() - k; i--){
+    for (int i = (int)vect.size() - 1; i >= (int)vect.size() - k; i--){
         cout << vect[i].second << " ";
     }
 
