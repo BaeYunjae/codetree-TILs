@@ -15,6 +15,8 @@ int main() {
     int d[101][101];
 
     // 초기화
+    d[0][0] = map[0][0];
+
     for (int i = 1; i < n; i++){
         d[i][0] = max(d[i - 1][0], map[i][0]);
     }
