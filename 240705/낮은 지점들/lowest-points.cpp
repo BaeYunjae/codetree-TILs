@@ -3,7 +3,7 @@
 using namespace std;
 
 int n;
-unordered_map<int, int> um;
+unordered_map<long long, long long> um;
 
 int main() {
     cin >> n;
@@ -18,6 +18,7 @@ int main() {
 
     int ans = 0;
     for (auto iter : um){
+        cout << iter.first << " " << iter.second << "\n";
         ans += iter.second;
     }
 
