@@ -4,13 +4,6 @@
 #include <algorithm>
 using namespace std;
 
-bool compare(pair<int, int> a, pair<int, int> b){
-    if (a.second == b.second){
-        return a.first > b.first;
-    }
-    return a.second > b.second;
-}
-
 int n, k;
 unordered_map<int, int> um;
 
@@ -22,12 +15,17 @@ int main() {
         cin >> num;
         um[num]++;
     }
-    
-    vector<pair<int, int>> vect(um.begin(), um.end());
-    sort(vect.begin(), vect.end(), compare);
 
-    for (int i = 0; i < k; i++){
-        cout << vect[i].first << " ";
+    vector<pair<int, int>> vect;
+
+    for (auto iter : um){
+        vect.push_back({iter.second, iter.first});
+    }
+
+    sort(vect.begin(), vect.end());
+
+    for (int i = vect.size() - 1; i >= vect.size() - k; i--){
+        cout << vect[i].second << " ";
     }
 
     return 0;
