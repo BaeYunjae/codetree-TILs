@@ -5,7 +5,7 @@ using namespace std;
 
 int n, m;
 string A[51], B[51];
-unordered_set<string, int> us;
+unordered_set<char*, int> us;
 
 void input(){
     for (int i = 0; i < n; i++){
@@ -40,11 +40,9 @@ int main() {
                     us[word] = 1;
                 }
                 for (int r = 0; r < n; r++){
-                    word[0] = B[r][i];
-                    word[1] = B[r][j];
-                    word[2] = B[r][k];
-
-                    string s{word};
+                    word[0] = &B[r][i];
+                    word[1] = &B[r][j];
+                    word[2] = &B[r][k];
 
                     cout << s << "\n";
                 }
