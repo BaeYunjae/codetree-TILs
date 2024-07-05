@@ -5,7 +5,7 @@ using namespace std;
 
 int n, m;
 string A[51], B[51];
-unordered_set<char*, int> us;
+unordered_set<string, int> us;
 
 void input(){
     for (int i = 0; i < n; i++){
@@ -28,23 +28,30 @@ int main() {
 
     int ans = 0;
 
-    char* word[3];
+    char word[4];
     for (int i = 0; i < m - 2; i++){
         for (int j = i + 1; j < m - 1; j++){
             for (int k = j + 1; k < m; k++){
                 for (int l = 0; l < n; l++){
-                    word[0] = &A[l][i];
-                    word[1] = &A[l][j];
-                    word[2] = &A[l][k];
+                    word[0] = A[l][i];
+                    word[1] = A[l][j];
+                    word[2] = A[l][k];
 
+                    string str(word);
+                    
                     us[word] = 1;
                 }
-                for (int r = 0; r < n; r++){
-                    word[0] = &B[r][i];
-                    word[1] = &B[r][j];
-                    word[2] = &B[r][k];
 
-                    cout << s << "\n";
+                cout << "\n";
+
+                for (int r = 0; r < n; r++){
+                    word[0] = B[r][i];
+                    word[1] = B[r][j];
+                    word[2] = B[r][k];
+
+                    string str(word);
+
+                    cout << word << "\n";
                 }
             }
         }
@@ -52,7 +59,7 @@ int main() {
 
 
     for (auto iter : us){
-        cout << iter.first << " " << iter.second << "\n";
+        //cout << iter.first << " " << iter.second << "\n";
     }
 
 
