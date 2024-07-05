@@ -28,14 +28,15 @@ int main() {
 
     int ans = 0;
 
-    array<char> word;
+    char* word[3];
     for (int i = 0; i < m - 2; i++){
         for (int j = i + 1; j < m - 1; j++){
             for (int k = j + 1; k < m; k++){
                 for (int l = 0; l < n; l++){
-                    word[0] = A[l][i];
-                    word[1] = A[l][j];
-                    word[2] = A[l][k];
+                    word[0] = &A[l][i];
+                    word[1] = &A[l][j];
+                    word[2] = &A[l][k];
+
                     us[word] = 1;
                 }
                 for (int r = 0; r < n; r++){
@@ -43,7 +44,9 @@ int main() {
                     word[1] = B[r][j];
                     word[2] = B[r][k];
 
-                    cout << word << "\n";
+                    string s{word};
+
+                    cout << s << "\n";
                 }
             }
         }
