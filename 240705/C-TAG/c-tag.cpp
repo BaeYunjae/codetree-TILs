@@ -5,7 +5,7 @@ using namespace std;
 
 int n, m;
 string A[51], B[51];
-unordered_set<string, int> us;
+unordered_set<string> us;
 
 void input(){
     for (int i = 0; i < n; i++){
@@ -39,10 +39,10 @@ int main() {
 
                     string str(word);
                     
-                    us[word] = 1;
+                    us.insert(word);
                 }
 
-                cout << "\n";
+                bool flag = false;
 
                 for (int r = 0; r < n; r++){
                     word[0] = B[r][i];
@@ -51,16 +51,18 @@ int main() {
 
                     string str(word);
 
-                    cout << word << "\n";
+                    if (us.find(word) != us.end()) {
+                        flag = true;
+                        break;
+                    }
                 }
+                if (!flag) ans++;
+                us.clear();
             }
         }
     }
-
-
-    for (auto iter : us){
-        //cout << iter.first << " " << iter.second << "\n";
-    }
+    
+    cout << ans;
 
 
     return 0;
