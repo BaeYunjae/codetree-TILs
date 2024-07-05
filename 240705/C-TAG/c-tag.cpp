@@ -1,6 +1,5 @@
 #include <iostream>
 #include <unordered_set>
-#include <string>
 using namespace std;
 
 int n, m;
@@ -16,6 +15,21 @@ void input(){
     }
 }
 
+bool TestLocation(int x, int y, int z){
+    us.clear();
+
+    for (int i = 0; i < n; i++){
+        us.insert(A[i].substr(x, 1) + A[i].substr(y, 1), A[i].substr(z, 1));
+    }
+
+    for (int i = 0; i < n; i++){
+        if (us.find(B[i].substr(x, 1) + B[i].substr(y, 1) + B[i].substr(z, 1)) != us.end())
+            return false;
+    }
+
+    return true;
+}
+
 int main() {
     cin >> n >> m;
 
@@ -28,42 +42,15 @@ int main() {
 
     int ans = 0;
 
-    char word[4];
     for (int i = 0; i < m - 2; i++){
         for (int j = i + 1; j < m - 1; j++){
             for (int k = j + 1; k < m; k++){
-                for (int l = 0; l < n; l++){
-                    word[0] = A[l][i];
-                    word[1] = A[l][j];
-                    word[2] = A[l][k];
-
-                    string str(word);
-                    
-                    us.insert(word);
-                }
-
-                bool flag = false;
-
-                for (int r = 0; r < n; r++){
-                    word[0] = B[r][i];
-                    word[1] = B[r][j];
-                    word[2] = B[r][k];
-
-                    string str(word);
-
-                    if (us.find(word) != us.end()) {
-                        flag = true;
-                        break;
-                    }
-                }
-                if (!flag) ans++;
-                us.clear();
+                if (TestLocation(i, j, k)) ans++;
             }
         }
     }
     
     cout << ans;
-
 
     return 0;
 }
