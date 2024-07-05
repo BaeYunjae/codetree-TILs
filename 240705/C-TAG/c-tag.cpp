@@ -19,7 +19,7 @@ bool TestLocation(int x, int y, int z){
     us.clear();
 
     for (int i = 0; i < n; i++){
-        us.insert(A[i].substr(x, 1) + A[i].substr(y, 1), A[i].substr(z, 1));
+        us.insert(A[i].substr(x, 1) + A[i].substr(y, 1) + A[i].substr(z, 1));
     }
 
     for (int i = 0; i < n; i++){
