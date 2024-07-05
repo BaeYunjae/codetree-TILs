@@ -4,7 +4,7 @@
 using namespace std;
 
 int n, m;
-string A[51], B[51];
+string A[501], B[501];
 unordered_set<string> us;
 
 void input(){
