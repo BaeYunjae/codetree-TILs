@@ -16,9 +16,7 @@ int main() {
             if (cmd == 'I'){
                 s.insert(n);
             }
-            else if (cmd == 'D'){
-                if (s.rbegin() == s.rend()) continue;
-
+            else if (cmd == 'D' && (int) s.size() > 0){
                 if (n == 1){
                     s.erase(*s.rbegin());
                 }
@@ -28,7 +26,7 @@ int main() {
             }
         }
 
-        if (s.rbegin() == s.rend()){
+        if ((int) s.size() == 0) {
             cout << "EMPTY\n";
         }
         else{
