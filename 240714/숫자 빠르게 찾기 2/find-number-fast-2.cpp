@@ -6,7 +6,31 @@ int main() {
     int n, m;
     cin >> n >> m;
 
+    int arr[100001];
+    int input[100001];
     set<int> s;
+
+    for (int i = 0; i < n; i++){
+        cin >> arr[i];
+    }
+    for (int i = 0; i < m; i++){
+        cin >> input[i];
+    }
+
+    for (int i = 0; i < n; i++){
+        s.insert(arr[i]);
+    }
+
+    for (int i = 0; i < m; i++){
+        if (lower_bound(input[i]) == s.end()){
+            cout << -1 << "\n";
+        }
+        else {
+            cout << *s.lower_bound(input[i]) << "\n";
+        }
+    }
+
+    /* 
     int num;
     for (int i = 0; i < n; i++) {
         cin >> num;
@@ -22,6 +46,7 @@ int main() {
             cout << -1 << "\n";
         }
     }
+    */
     
     return 0;
 }
