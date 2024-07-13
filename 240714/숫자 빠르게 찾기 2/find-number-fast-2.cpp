@@ -22,7 +22,7 @@ int main() {
     }
 
     for (int i = 0; i < m; i++){
-        if (lower_bound(input[i]) == s.end()){
+        if (s.lower_bound(input[i]) == s.end()){
             cout << -1 << "\n";
         }
         else {
