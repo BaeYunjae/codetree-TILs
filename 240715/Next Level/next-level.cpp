@@ -1,33 +1,19 @@
 #include <iostream>
 #include <string>
+#include <tuple>
 using namespace std;
 
-class User{
-    public:
-        string id;
-        int level;
+int main(){
+    tuple<string, int> t = make_tuple("codetree", 10);
 
-        User(string id = "codetree", int level = 10){
-            this->id = id;
-            this->level = level;
-        }
-};
+    string id;
+    int level;
+    tie(id, level) = t;
 
-int main() {
+    cout << "user " << id << " lv " << level << "\n";
 
-    User user1 = User();
+    cin >> id >> level;
 
-    cout << "user " << user1.id << " lv " << user1.level << "\n";
-    
-    string new_id;
-    int new_lv;
-
-    cin >> new_id >> new_lv;
-    
-    user1.id = new_id;
-    user1.level = new_lv;
-
-    cout << "user " << user1.id << " lv " << user1.level << "\n";
-
-    return 0;
+    t = make_tuple(id, level);
+    cout << "user " << id << " lv " << level << "\n";
 }
