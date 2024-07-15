@@ -1,41 +1,30 @@
 #include <iostream>
+#include <tuple>
 using namespace std;
 
-class Agent{
-    public:
-        char codename;
-        int score;
+int main(){
+    tuple<char, int> t[5];
 
-        Agent (char codename = 0, int score = 0){
-            this->codename = codename;
-            this->score = score;
-        }
-};
-
-int main() {
-    
-    Agent agents[5];
-
-    char c;
-    int s;
 
     int minScore = 100;
     int ans = 0;
 
     for (int i = 0; i < 5; i++){
-        cin >> c >> s;
+        char codename;
+        int score;
+        cin >> codename >> score;
 
-        if (s < minScore){
-            minScore = s;
+        if (score < minScore){
+            minScore = score;
             ans = i;
         }
 
-        agents[i] = Agent(c, s);
+        t[i] = make_tuple(codename, score);
     }
 
-    cout << agents[ans].codename << " " << agents[ans].score;
+    char codename;
+    int score;
+    tie(codename, score) = t[ans];
+    cout << codename << " " << score;
 
-
-
-    return 0;
 }
