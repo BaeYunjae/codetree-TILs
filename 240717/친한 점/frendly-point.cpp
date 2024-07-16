@@ -2,30 +2,42 @@
 #include <set>
 using namespace std;
 
+int n, m;
+pair<int, int> points[100000];
+pair<int, int> queries[100000];
+
+set<pair<int, int> > s;
+
 int main() {
-    int n, m;
-    set<pair<int, int> > s;
 
     cin >> n >> m;
 
     for (int i = 0; i < n; i++){
         int x, y;
         cin >> x >> y;
-        s.insert(make_pair(x, y));
+        points[i] = make_pair(x, y);
     }
 
     for (int i = 0; i < m; i++){
         int x, y;
         cin >> x >> y;
 
-        pair<int, int> ans;
-        if (s.lower_bound(make_pair(x, y)) == s.end()){
-            ans = make_pair(-1, -1);
+        queries[i] = make_pair(x, y);
+    }
+
+    for (int i = 0; i < n; i++){
+        s.insert(points[i]);
+    }
+
+    for (int i = 0; i < m; i++1) {
+        if (s.lower_bound(queries[i]) == s.end()){
+            cout << "-1 -1\n";
         }
         else{
-            ans = *s.lower_bound(make_pair(x, y));
+            int x, y;
+            tie(x, y) = *s.lower_bound(queries[i]);
+            cout << x << " " << y << "\n";
         }
-        cout << ans.first << " " << ans.second << "\n";
     }
 
     return 0;
