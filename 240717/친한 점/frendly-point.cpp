@@ -1,5 +1,6 @@
 #include <iostream>
 #include <set>
+#include <tuple>
 using namespace std;
 
 int n, m;
@@ -29,7 +30,7 @@ int main() {
         s.insert(points[i]);
     }
 
-    for (int i = 0; i < m; i++1) {
+    for (int i = 0; i < m; i++) {
         if (s.lower_bound(queries[i]) == s.end()){
             cout << "-1 -1\n";
         }
