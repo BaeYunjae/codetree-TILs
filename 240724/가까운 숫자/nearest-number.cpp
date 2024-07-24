@@ -15,7 +15,7 @@ int main() {
         cin >> num;
         s.insert(num);
 
-        int minDist = 1e9;
+        int minDist = 21e8;
 
         int a, b;
         set<int>::iterator it;
@@ -27,8 +27,6 @@ int main() {
 
             it--;
             b = *it;
-
-            if (a - b >= minDist) break;
             
             minDist = min(minDist, a - b);
         }
