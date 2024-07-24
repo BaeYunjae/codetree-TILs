@@ -3,38 +3,37 @@
 #include <algorithm>
 using namespace std;
 
+int n;
+int queries[100001];
+set<int> s;
+
+int ans = 100000;
+
 int main() {
-    int n;
     cin >> n;
+    for (int i = 0; i < n; i++){
+        cin >> queries[i];
+    }
 
-    set<int> s;
+    // x = 0에 점을 놓고 시작
     s.insert(0);
-    
-    while(n--){
-        int num;
-        cin >> num;
-        s.insert(num);
 
-        int minDist = 21e8;
+    for (int i = 0; i < n; i++){
+        // 가장 근처에 있는 오른쪽 점 찾기
+        set<int>::iterator it = s.upper_bound(queries[i]);
 
-        int a, b;
-        set<int>::iterator it;
-        for (auto i = s.begin(); i != s.end(); i++){
-            if (*i == *s.rbegin()) break;
-            
-            it = s.upper_bound(*i);
-            a = *it;
-
-            it--;
-            b = *it;
-            
-            minDist = min(minDist, a - b);
+        // 존재한다면, 거리 중 최솟값 갱신
+        if (it != s.end()){
+            ans = min(ans, *it - queries[i]);
         }
 
-        cout << minDist << "\n";
-    }
-    
+        // 가장 근처에 있는 왼쪽 점 찾기
+        it--;
+        ans = min(ans, queries[i] - *it);
 
+        s.insert(queries[i]);
+        cout << ans << "\n";
+    }
 
     return 0;
 }
