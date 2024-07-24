@@ -27,6 +27,8 @@ int main() {
 
             it--;
             b = *it;
+
+            if (a - b >= minDist) break;
             
             minDist = min(minDist, a - b);
         }
