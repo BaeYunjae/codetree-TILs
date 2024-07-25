@@ -22,20 +22,39 @@ int main() {
         cout << "\n";
     }
 
-    for (int i = 0; i < n; i++){
-        if (i % 2 == 0){
-            for (int j = 0; j < b; j++){
-                cout << "* ";
+    if (n % 2 == 0){
+        for (int i = 0; i < n; i++){
+            if (i % 2 == 0){
+                for (int j = 0; j < a; j++){
+                    cout << "* ";
+                }
+                a++;
             }
-            b--;
-        }
-        else{
-            for (int j = 0; j < a; j++){
-                cout << "* ";
+            else{
+                for (int j = 0; j < b; j++){
+                    cout << "* ";
+                }
+                b--;
             }
-            a++;
+            cout << "\n";
         }
-        cout << "\n";
+    }
+    else{
+        for (int i = 0; i < n; i++){
+            if (i % 2 == 0){
+                for (int j = 0; j < b; j++){
+                    cout << "* ";
+                }
+                b--;
+            }
+            else{
+                for (int j = 0; j < a; j++){
+                    cout << "* ";
+                }
+                a++;
+            }
+            cout << "\n";
+        }
     }
 
 
