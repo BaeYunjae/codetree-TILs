@@ -13,9 +13,7 @@ int main() {
     for (int i = 0; i < n; i++){
         cin >> str;
         cnt += str.length();
-        for (char c : str){
-            if (c == 'a') a++;
-        }    
+        if (str[0] == 'a') a++;
     }
 
     cout << cnt << " " << a;
