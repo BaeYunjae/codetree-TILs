@@ -22,7 +22,7 @@ int upperBound(int target){
         }
     }
 
-    if (arr[res] != target) return -1;
+    if (res == 1e9 || arr[res] != target) return -1;
 
     return res + 1;
 }
