@@ -5,10 +5,10 @@ using namespace std;
 int n, m;
 int arr[100001];
 
-int upperBound(int target){
+int lowerBound(int target){
     int left = 0;
-    int right = n - 1;
-    int res = 1e9;
+    int right = n;
+    int res = n + 1;
 
     while (left <= right){
         int mid = (left + right) / 2;
@@ -22,9 +22,7 @@ int upperBound(int target){
         }
     }
 
-    if (res == 1e9 || arr[res] != target) return -1;
-
-    return res + 1;
+    return res;
 }
 
 int main() {
@@ -37,7 +35,14 @@ int main() {
     for (int i = 0; i < m; i++){
         int x;
         cin >> x;
-        cout << upperBound(x) << "\n";
+        
+        int now = lowerBound(x);
+        if (now <= n && arr[now] == x){
+            cout << now << "\n";
+        }
+        else {
+            cout << -1 << "\n";
+        }
     }
     
     return 0;
