@@ -6,7 +6,7 @@ int n, m;
 int arr[100001];
 
 int lowerBound(int target){
-    int left = 0;
+    int left = 1;
     int right = n;
     int res = n + 1;
 
@@ -28,7 +28,7 @@ int lowerBound(int target){
 int main() {
     cin >> n >> m;
 
-    for (int i = 0; i < n; i++){
+    for (int i = 1; i <= n; i++){
         cin >> arr[i];
     }
 
