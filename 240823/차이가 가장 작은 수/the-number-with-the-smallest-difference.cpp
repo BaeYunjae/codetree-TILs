@@ -7,38 +7,29 @@ int n, m;
 int nums[100001];
 set<int> s;
 
-int ans = 1e9 + 1;
+int ans = 21e8;
 
 int main() {
     cin >> n >> m;
 
     for (int i = 0; i < n; i++){
-        cin >> nums[i];
-        s.insert(nums[i]);
+        int num;
+        cin >> num;
+
+        s.insert(num);
     }
 
-    for (int i = 0; i < n; i++){
-        int x = nums[i];
-        
-        // x보다 m 이상 더 크면서 가장 작은 값
-        // r - x >= m 만족하는 최소 r
-        // r >= m + x 만족하는 최소 r
-        if (s.lower_bound(m + x) != s.end()){
-            ans = min(ans, *s.lower_bound(m + x) - x);
-        }
+    for (auto it : s){
+        // 차이가 m 이상
+        auto iter = s.lower_bound(it - m);
 
-        // x보다 m 이상 더 작으면서 가장 큰 값
-        // x - r >= m
-        // r <= x - m
-        set<int>::iterator it = s.upper_bound(x - m);
-        if (it != s.begin()){
-            it--;
-            ans = min(ans, x - *it);
-        }
+        if (iter != s.end() && it - *iter >= m) ans = min(ans, abs(it - *iter));
 
+        iter = s.lower_bound(it + m);
+
+        if (iter != s.end() && *iter - it >= m) ans = min(ans, abs(*iter - it));
     }
-    
-    if (ans == 1e9 + 1) ans = -1;
+
     cout << ans;
 
 
