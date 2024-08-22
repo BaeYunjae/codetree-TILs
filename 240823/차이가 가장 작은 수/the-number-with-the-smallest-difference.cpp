@@ -30,6 +30,7 @@ int main() {
         if (iter != s.end() && *iter - it >= m) ans = min(ans, abs(*iter - it));
     }
 
+    if (ans == 21e8) ans = -1;
     cout << ans;
 
 
